@@ -18,7 +18,7 @@ const CTA: React.FC = () => {
             trigger: containerRef.current,
             start: 'top bottom',
             end: 'bottom top',
-            scrub: true,
+            scrub: 2,
           }
         }
       );
@@ -46,7 +46,9 @@ const CTA: React.FC = () => {
           Act<span className="text-[30px] text-[#1b1b1b] ">.</span> Refine<span className="text-[30px] text-[#1b1b1b] ">.</span>Construct
         </p>
 
-        <button className=" rounded-full bg-[#1e3a5f] text-white px-16 py-6 text-[15px] uppercase tracking-[0.4em] font-bold hover:bg-[#152d47] transition-all shadow-2xl">
+        <button
+            onClick={()=> window.open('https://forms.gle/wy4bHuJntt915GnP7')}
+          className=" rounded-full bg-[#1e3a5f] text-white px-16 py-6 text-[15px] uppercase tracking-[0.4em] font-bold hover:bg-[#152d47] transition-all shadow-2xl">
           Participate
         </button>
       </div>

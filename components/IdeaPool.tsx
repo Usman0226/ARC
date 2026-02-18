@@ -22,7 +22,7 @@ const IdeaPool: React.FC = () => {
             trigger: '.timeline-container',
             start: 'top 40%',
             end: 'bottom 60%',
-            scrub: 1,
+              scrub: 2,
           }
         }
       );
