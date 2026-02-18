@@ -56,7 +56,7 @@ const Navbar: React.FC = () => {
       </div>
 
       <button 
-        onClick={() => window.open('https://github.com/ARC-CLUB-MITS', '_blank')}
+        onClick={() => window.open('https://github.com/ARC-CLUB-MITS')}
         onMouseMove={handleButtonMouseMove}
         onMouseLeave={handleButtonMouseLeave}
         style={{

@@ -69,7 +69,7 @@ const PlanningPhase: React.FC = () => {
   ];
 
   return (
-    <section ref={containerRef} className="bg-white py-32 md:py-48 px-6">
+    <section ref={containerRef} className="bg-white py-32 md:py-24 px-6">
       <div className="max-w-4xl mx-auto">
         <div className="mb-20">
           <p className="text-[#d4a84a] text-[10px] uppercase tracking-[0.2em] font-semibold mb-6">Section 02</p>

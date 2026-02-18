@@ -10,6 +10,7 @@ const Hero: React.FC = () => {
   const btnContainerRef = useRef<HTMLDivElement>(null);
   const [buttonTransform, setButtonTransform] = useState({ x: 0, y: 0 });
   const [activeButton, setActiveButton] = useState<string | null>(null);
+  const btnref = useRef()
 
   const handleButtonMouseMove = (e: React.MouseEvent<HTMLButtonElement>, buttonId: string) => {
     const button = e.currentTarget;
@@ -93,110 +94,122 @@ const Hero: React.FC = () => {
 
   return (
     <section ref={containerRef} className="relative h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden pt-20 bg-gradient-to-b from-gray-50 to-white">
-      
-      {/* Background decorative elements - closer hierarchy inspired by ChronoTask */}
-      
+            
       {/* Top Left - Code Snippet Card */}
-      <div className="float-element hidden lg:block absolute top-32 left-[8%] xl:left-[12%] bg-white rounded-xl shadow-lg p-4 max-w-[180px] rotate-[-3deg] border border-gray-200/50">
-        <div className="flex items-center gap-2 mb-3">
-          <div className="flex gap-1">
-            <div className="w-2 h-2 rounded-full bg-red-400"></div>
-            <div className="w-2 h-2 rounded-full bg-yellow-400"></div>
-            <div className="w-2 h-2 rounded-full bg-green-400"></div>
+      <div className="absolute top-20 left-[-10px] lg:top-32 lg:left-[8%] xl:left-[12%] rotate-[-3deg] scale-[0.6] lg:scale-100 z-0">
+        <div className="float-element bg-white rounded-xl shadow-lg p-4 max-w-[180px] border border-gray-200/50">
+          <div className="flex items-center gap-2 mb-3">
+            <div className="flex gap-1">
+              <div className="w-2 h-2 rounded-full bg-red-400"></div>
+              <div className="w-2 h-2 rounded-full bg-yellow-400"></div>
+              <div className="w-2 h-2 rounded-full bg-green-400"></div>
+            </div>
+            <span className="text-[8px] text-gray-400 font-mono">research.ts</span>
           </div>
-          <span className="text-[8px] text-gray-400 font-mono">research.ts</span>
+          <pre className="text-[8px] font-mono text-gray-700 leading-relaxed">
+            <code className="text-blue-600">const</code> research = {'{'}
+            {'\n  '}method: <code className="text-green-600">'data'</code>,
+            {'\n  '}output: <code className="text-purple-600">paper</code>
+            {'\n}'};
+          </pre>
         </div>
-        <pre className="text-[8px] font-mono text-gray-700 leading-relaxed">
-          <code className="text-blue-600">const</code> research = {'{'}
-          {'\n  '}method: <code className="text-green-600">'data'</code>,
-          {'\n  '}output: <code className="text-purple-600">paper</code>
-          {'\n}'};
-        </pre>
       </div>
 
       {/* Top Right - Terminal */}
-      {/* <div className="float-element hidden lg:block absolute top-36 right-[8%] xl:right-[12%] bg-gray-900 rounded-xl shadow-xl p-3 max-w-[200px] rotate-[2deg] border border-gray-800">
-        <div className="flex items-center gap-2 mb-2">
-          <div className="w-2 h-2 rounded-full bg-red-500"></div>
-          <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
-          <div className="w-2 h-2 rounded-full bg-green-500"></div>
-        </div>
-        <div className="font-mono text-[8px] leading-relaxed">
-          <p><span className="text-green-400">$</span> <span className="text-gray-300">npm run analyze</span></p>
-          <p className="text-blue-300">✓ Analysis complete</p>
-          <p className="text-purple-300">✓ Paper generated</p>
+      {/* <div className="absolute top-36 right-[8%] xl:right-[12%] rotate-[2deg] hidden lg:block">
+        <div className="float-element bg-gray-900 rounded-xl shadow-xl p-3 max-w-[200px] border border-gray-800">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-2 h-2 rounded-full bg-red-500"></div>
+            <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
+            <div className="w-2 h-2 rounded-full bg-green-500"></div>
+          </div>
+          <div className="font-mono text-[8px] leading-relaxed">
+            <p><span className="text-green-400">$</span> <span className="text-gray-300">npm run analyze</span></p>
+            <p className="text-blue-300">✓ Analysis complete</p>
+            <p className="text-purple-300">✓ Paper generated</p>
+          </div>
         </div>
       </div> */}
 
       {/* Top Right - stats */}
-      <div className="float-element hidden lg:block absolute top-36 right-[8%] xl:right-[12%] bg-white rounded-xl shadow-xl p-3 max-w-[200px] rotate-[2deg]  border-gray-800">
-        <div className="flex items-center gap-4">
-          <div className="text-center">
-            <p className="text-xl font-bold text-[#1e3a5f]">24</p>
-            <p className="text-[8px] text-gray-500 uppercase tracking-wider font-medium">Projects</p>
-          </div>
-          <div className="w-[1px] h-10 bg-gray-200"></div>
-          <div className="text-center">
-            <p className="text-xl font-bold text-[#d4a84a]">156</p>
-            <p className="text-[8px] text-gray-500 uppercase tracking-wider font-medium">Papers</p>
+      <div className="hidden lg:block absolute top-24 right-[-10px] lg:top-36 lg:right-[8%] xl:right-[12%] rotate-[2deg] scale-[0.65] lg:scale-100 z-0">
+        <div className="float-element bg-white rounded-xl shadow-xl p-3 max-w-[200px] border border-gray-100">
+          <div className="flex items-center gap-4">
+            <div className="text-center">
+              <p className="text-xl font-bold text-[#1e3a5f]">24</p>
+              <p className="text-[8px] text-gray-500 uppercase tracking-wider font-medium">Projects</p>
+            </div>
+            <div className="w-[1px] h-10 bg-gray-200"></div>
+            <div className="text-center">
+              <p className="text-xl font-bold text-[#d4a84a]">156</p>
+              <p className="text-[8px] text-gray-500 uppercase tracking-wider font-medium">Papers</p>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Left Middle - Project Stats Card */}
-      {/* <div className="float-element hidden xl:block absolute left-[6%] top-1/2 -translate-y-1/2 bg-white rounded-xl shadow-lg p-4 rotate-[-2deg] border border-gray-200/50">
-        <div className="flex items-center gap-3">
-          <div className="bg-blue-50 p-2 rounded-lg">
-            <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"/>
-            </svg>
+      {/* <div className="absolute left-[6%] top-1/2 -translate-y-1/2 rotate-[-2deg] hidden xl:block">
+        <div className="float-element bg-white rounded-xl shadow-lg p-4 border border-gray-200/50">
+          <div className="flex items-center gap-3">
+            <div className="bg-blue-50 p-2 rounded-lg">
+              <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"/>
+              </svg>
+            </div>
+            <div className="text-left">
+              <p className="text-xs font-bold text-gray-700">research/</p>
+              <p className="text-[9px] text-gray-500">12 files</p>
+            </div>  
           </div>
-          <div className="text-left">
-            <p className="text-xs font-bold text-gray-700">research/</p>
-            <p className="text-[9px] text-gray-500">12 files</p>
-          </div>  
         </div>
       </div> */}
 
       {/* Right Middle - NPM Package */}
-      {/* <div className="float-element hidden xl:block absolute right-[6%] top-1/2 -translate-y-1/2 bg-white rounded-xl shadow-lg p-4 rotate-[2deg] border border-gray-200/50">
-        <div className="flex items-center gap-3">
-          <svg className="w-7 h-7" viewBox="0 0 24 24" fill="#CB3837">
-            <path d="M0 7.334v8h6.666v1.332H12v-1.332h12v-8H0zm6.666 6.664H5.334v-4H3.999v4H1.335V8.667h5.331v5.331zm4 0v1.336H8.001V8.667h5.334v5.332h-2.669v-.001zm12.001 0h-1.33v-4h-1.336v4h-1.335v-4h-1.33v4h-2.671V8.667h8.002v5.331zM10.665 10H12v2.667h-1.335V10z"/>
-          </svg>
-          <div className="text-left">
-            <p className="text-[10px] font-mono font-bold text-gray-700">@arc/core</p>
-            <p className="text-[8px] text-gray-500">v2.4.1</p>
+      {/* <div className="absolute right-[6%] top-1/2 -translate-y-1/2 rotate-[2deg] hidden xl:block">
+        <div className="float-element bg-white rounded-xl shadow-lg p-4 border border-gray-200/50">
+          <div className="flex items-center gap-3">
+            <svg className="w-7 h-7" viewBox="0 0 24 24" fill="#CB3837">
+              <path d="M0 7.334v8h6.666v1.332H12v-1.332h12v-8H0zm6.666 6.664H5.334v-4H3.999v4H1.335V8.667h5.331v5.331zm4 0v1.336H8.001V8.667h5.334v5.332h-2.669v-.001zm12.001 0h-1.33v-4h-1.336v4h-1.335v-4h-1.33v4h-2.671V8.667h8.002v5.331zM10.665 10H12v2.667h-1.335V10z"/>
+            </svg>
+            <div className="text-left">
+              <p className="text-[10px] font-mono font-bold text-gray-700">@arc/core</p>
+              <p className="text-[8px] text-gray-500">v2.4.1</p>
+            </div>
           </div>
         </div>
       </div> */}
 
       {/* Bottom Left - Activity Stats */}
-      {/* <div className="float-element hidden lg:block absolute bottom-[18%] left-[10%] xl:left-[15%] bg-white rounded-xl shadow-lg p-4 rotate-[1deg] border border-gray-200/50">
-        <div className="flex items-center gap-4">
-          <div className="text-center">
-            <p className="text-xl font-bold text-[#1e3a5f]">24</p>
-            <p className="text-[8px] text-gray-500 uppercase tracking-wider font-medium">Projects</p>
-          </div>
-          <div className="w-[1px] h-10 bg-gray-200"></div>
-          <div className="text-center">
-            <p className="text-xl font-bold text-[#d4a84a]">156</p>
-            <p className="text-[8px] text-gray-500 uppercase tracking-wider font-medium">Papers</p>
+      {/* <div className="absolute bottom-[18%] left-[10%] xl:left-[15%] rotate-[1deg] hidden lg:block">
+        <div className="float-element bg-white rounded-xl shadow-lg p-4 border border-gray-200/50">
+          <div className="flex items-center gap-4">
+            <div className="text-center">
+              <p className="text-xl font-bold text-[#1e3a5f]">24</p>
+              <p className="text-[8px] text-gray-500 uppercase tracking-wider font-medium">Projects</p>
+            </div>
+            <div className="w-[1px] h-10 bg-gray-200"></div>
+            <div className="text-center">
+              <p className="text-xl font-bold text-[#d4a84a]">156</p>
+              <p className="text-[8px] text-gray-500 uppercase tracking-wider font-medium">Papers</p>
+            </div>
           </div>
         </div>
       </div> */}
 
       {/* Bottom Right - Git Commits */}
-      <div className="float-element hidden lg:block absolute bottom-[18%] right-[10%] xl:right-[15%] bg-white rounded-xl shadow-lg p-3 rotate-[-2deg] border border-gray-200/50">
-        <div className="flex items-center gap-2">
-          <div className="bg-orange-50 p-2 rounded-lg">
-            <svg className="w-4 h-4 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M21.007 8.222A3.738 3.738 0 0 0 15.045 5.2a3.737 3.737 0 0 0 1.156 6.583 2.988 2.988 0 0 1-2.668 1.67h-2.99a4.456 4.456 0 0 0-2.989 1.165V7.4a3.737 3.737 0 1 0-1.494 0v9.117a3.776 3.776 0 1 0 1.816.099 2.99 2.99 0 0 1 2.668-1.667h2.99a4.484 4.484 0 0 0 4.223-3.039 3.736 3.736 0 0 0 3.25-3.687zM4.565 3.738a2.242 2.242 0 1 1 4.484 0 2.242 2.242 0 0 1-4.484 0zm4.484 16.441a2.242 2.242 0 1 1-4.484 0 2.242 2.242 0 0 1 4.484 0zm8.221-9.715a2.242 2.242 0 1 1 0-4.485 2.242 2.242 0 0 1 0 4.485z"/>
-            </svg>
-          </div>
-          <div className="text-left">
-            <p className="text-[9px] font-mono text-gray-500">main</p>
-            <p className="text-[10px] font-mono text-gray-700 font-semibold">3 commits</p>
+      <div className="absolute bottom-32 right-[-10px] lg:bottom-[18%] lg:right-[10%] xl:right-[15%] rotate-[-2deg] scale-[0.7] lg:scale-100 z-0">
+        <div className="float-element bg-white rounded-xl shadow-lg p-3 border border-gray-200/50">
+          <div className="flex items-center gap-2">
+            <div className="bg-orange-50 p-2 rounded-lg">
+              <svg className="w-4 h-4 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M21.007 8.222A3.738 3.738 0 0 0 15.045 5.2a3.737 3.737 0 0 0 1.156 6.583 2.988 2.988 0 0 1-2.668 1.67h-2.99a4.456 4.456 0 0 0-2.989 1.165V7.4a3.737 3.737 0 1 0-1.494 0v9.117a3.776 3.776 0 1 0 1.816.099 2.99 2.99 0 0 1 2.668-1.667h2.99a4.484 4.484 0 0 0 4.223-3.039 3.736 3.736 0 0 0 3.25-3.687zM4.565 3.738a2.242 2.242 0 1 1 4.484 0 2.242 2.242 0 0 1-4.484 0zm4.484 16.441a2.242 2.242 0 1 1-4.484 0 2.242 2.242 0 0 1 4.484 0zm8.221-9.715a2.242 2.242 0 1 1 0-4.485 2.242 2.242 0 0 1 0 4.485z"/>
+              </svg>
+            </div>
+            <div className="text-left">
+              <p className="text-[9px] font-mono text-gray-500">main</p>
+              <p className="text-[10px] font-mono text-gray-700 font-semibold">3 commits</p>
+            </div>
           </div>
         </div>
       </div>
@@ -231,6 +244,7 @@ const Hero: React.FC = () => {
 
         <div ref={btnContainerRef} className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <button 
+            onClick={()=> window.open('https://forms.gle/wy4bHuJntt915GnP7')}
             onMouseMove={(e) => handleButtonMouseMove(e, 'join')}
             onMouseLeave={handleButtonMouseLeave}
             style={{
@@ -242,6 +256,8 @@ const Hero: React.FC = () => {
             Submit <Lightbulb size={16}/>
           </button>
           <button 
+            ref={btnref}
+            onClick={()=> window.open('https://chat.whatsapp.com/GxKLMyN99POCxahNy0QLxy')}
             onMouseMove={(e) => handleButtonMouseMove(e, 'thesis')}
             onMouseLeave={handleButtonMouseLeave}
             style={{

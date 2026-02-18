@@ -41,7 +41,7 @@ const Execution: React.FC = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="bg-white py-32 md:py-48 px-6 md:px-24">
+    <section ref={containerRef} className="bg-white py-32 md:py-24 px-6 md:px-24">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
