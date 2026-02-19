@@ -20,7 +20,6 @@ const Launch = ({ onEnter }: LaunchProps) => {
   const[Lauch,setLauch] = useState(false)
 
   const handleEnter = () => {
-    // Exit animation timeline
     const exitTl = gsap.timeline({
       onComplete: () => {
         onEnter();
@@ -32,7 +31,7 @@ const Launch = ({ onEnter }: LaunchProps) => {
       .to(contentRef.current, {
         y: -40,
         opacity: 0,
-        duration: 0.6,
+        duration: 0.3,
         ease: "power3.in",
       })
       // Entire screen fades out
@@ -40,7 +39,7 @@ const Launch = ({ onEnter }: LaunchProps) => {
         containerRef.current,
         {
           opacity: 0,
-          duration: 0.5,
+          duration: 0,
           ease: "power2.in",
         },
         "-=0.2"

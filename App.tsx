@@ -1,5 +1,6 @@
 
 import React, { useEffect, useRef, useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from './components/Navbar';
@@ -11,6 +12,9 @@ import Blueprinting from './components/Blueprinting';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
 import Launch from './components/Launch';
+import Projects from './components/Projects';
+import Events from './components/Events';
+import { Home } from 'lucide-react';
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -78,15 +82,24 @@ const App: React.FC = () => {
     <div ref={mainRef} className="relative min-h-screen">
       {showLaunch && <Launch onEnter={handleEnter} />}
       {!showLaunch && (
-        <>
-          <Navbar />
-          <Hero />
-          <IdeaPool />
-          <PlanningPhase />
-          <Execution />
-          <CTA />
-          <Footer />
-        </>
+        <Routes>
+          <Route path="/" element={
+            <>
+              <Navbar />
+              <Hero />
+              <IdeaPool />
+              <PlanningPhase />
+              <Execution />
+              <CTA />
+              <Footer />
+            </>
+          } />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/home" element={ <>
+              <Home />
+            </>} />
+        </Routes>
       )}
     </div>
   );

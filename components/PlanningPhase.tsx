@@ -48,23 +48,18 @@ const PlanningPhase: React.FC = () => {
   const phases = [
     {
       title: 'Scope Definition',
-      desc: 'Hard boundaries for project research, preventing feature creep and maintaining focus.',
+      desc: 'Features are defined and the tasks are created and divded among the alloted team members.',
       icon: Target,
     },
     {
-      title: 'Resource Allocation',
-      desc: 'Deployment of computational power and specialized research talent to key focus areas.',
+      title: 'GitHub - Organization',
+      desc: 'A Backlog is created and the tasks are listed in it.',
       icon: Users,
     },
     {
       title: 'Timeline Mapping',
-      desc: 'Aggressive but realistic milestone setting with built-in buffer for deep exploration.',
+      desc: 'Project progress is tracked every week by Faculty Coordinator.',
       icon: Calendar,
-    },
-    {
-      title: 'Risk Assessment',
-      desc: 'Proactive identification of technical bottlenecks and data limitations before they arise.',
-      icon: Shield,
     }
   ];
 

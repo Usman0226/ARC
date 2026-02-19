@@ -50,17 +50,17 @@ const IdeaPool: React.FC = () => {
   const phases = [
     {
       title: 'Ideation',
-      desc: 'Defining the fundamental categories and relationships within the research domain to ensure a cohesive structural integrity from the start.',
+      desc: 'Students submit thier ideas in the text format .',
       icon: Lightbulb,
     },
     {
       title: 'Validation',
-      desc: 'Selecting and refining the analytical frameworks. We challenge every assumption through rigorous peer-reviewed protocols and data acquisition.',
+      desc: 'Selecting the best ideas and refining them - Faculty Coordinator.',
       icon: TrendingUp,
     },
     {
-      title: 'Selection',
-      desc: 'The transition from data to narrative. Here, the research takes its final form as a high-impact creative or academic contribution ready for distribution.',
+      title: 'Team Formation ',
+      desc: 'A four members team will be formed to work on the idea.',
       icon: CheckCircle,
     }
   ];
@@ -75,7 +75,7 @@ const IdeaPool: React.FC = () => {
             <span className="italic text-[#1e3a5f]">Idea Pool</span>
           </h2>
           <p className="mt-12 text-gray-600 italic font-serif text-lg md:text-xl max-w-lg">
-            A sophisticated repository of raw concepts, filtered through the lens of academic rigor and market viability.
+            A repository of raw ideas, filtered through the real world requirements & promote the innovation.
           </p>
         </div>
 

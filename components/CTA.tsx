@@ -27,7 +27,7 @@ const CTA: React.FC = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative bg-[var(--bg-color)] py-48 px-6 flex flex-col items-center justify-center text-center overflow-hidden transition-colors duration-0">
+    <section ref={containerRef} className="relative bg-[var(--bg-color)] py-24 px-6 flex flex-col items-center justify-center text-center overflow-hidden transition-colors duration-0">
       <div className="cta-bg-text absolute inset-0 flex items-center justify-center pointer-events-none select-none">
         <span className="text-[30vw] font-serif font-bold tracking-tighter text-gray">ARC</span>
       </div>

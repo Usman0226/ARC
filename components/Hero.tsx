@@ -257,7 +257,7 @@ const Hero: React.FC = () => {
         <h1 ref={titleRef} style={{ opacity: 0 }} className="text-[clamp(3rem,12vw,12rem)] font-serif font-bold tracking-tighter leading-[0.85] text-[var(--text-color)] mb-10">
           ARC CLUB
         </h1>
-        <p style={{ opacity: 0 }} className="text-[12px] uppercase tracking-[0.5em] mb-12 text-[#d4a84a] font-medium">Applied Research & Creation</p>
+        <p  className="text-[12px] uppercase tracking-[0.5em] mb-12 text-[#d4a84a] font-medium">Applied Research & Creation</p>
 
 
         <p ref={subtitleRef} style={{ opacity: 0 }} className="italic font-serif text-xl md:text-2xl text-gray-600 max-w-xl mx-auto mb-16 leading-relaxed">
