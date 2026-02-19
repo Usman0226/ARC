@@ -66,11 +66,11 @@ const IdeaPool: React.FC = () => {
   ];
 
   return (
-    <section ref={containerRef} className="bg-white text-gray-900 py-32 md:py-16 px-6">
+    <section ref={containerRef} className="idea-pool-trigger bg-[var(--bg-color)] text-[var(--text-color)] py-32 md:py-16 px-6 transition-colors duration-0">
       <div className="max-w-4xl mx-auto">
         <div className="mb-20">
           <p className="text-[#d4a84a] text-[10px] uppercase tracking-[0.2em] font-semibold mb-6">Section 01</p>
-          <h2 className="text-6xl md:text-8xl font-serif font-medium leading-[0.9] text-[#0a0a0b]">
+          <h2 className="text-6xl md:text-8xl font-serif font-medium leading-[0.9] text-[var(--text-color)]">
             The <br /> 
             <span className="italic text-[#1e3a5f]">Idea Pool</span>
           </h2>
@@ -111,7 +111,7 @@ const IdeaPool: React.FC = () => {
                   </div>
                   
                   <div className={`${isLeft ? 'md:text-right' : 'md:text-left'} max-w-md pl-20 md:pl-0`}>
-                    <h3 className="text-4xl md:text-6xl font-serif font-bold mb-4 text-[#0a0a0b]">{item.title}</h3>
+                    <h3 className="text-4xl md:text-6xl font-serif font-bold mb-4 text-[var(--text-color)]">{item.title}</h3>
                     <p className="text-gray-600 text-sm leading-relaxed">
                       {item.desc}
                     </p>

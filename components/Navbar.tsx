@@ -1,9 +1,11 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import { gsap } from 'gsap';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [buttonTransform, setButtonTransform] = useState({ x: 0, y: 0 });
+  const navRef = useRef<HTMLElement>(null);
 
   const handleButtonMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
     const button = e.currentTarget;
@@ -34,25 +36,50 @@ const Navbar: React.FC = () => {
       }
     };
 
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ 
+        defaults: { ease: 'ease-in', duration: 4.5 },
+        delay: 0.7
+      });
+      
+      tl.fromTo(navRef.current,
+        { yPercent: -100, opacity: 0 },
+        { yPercent: 0, opacity: 1, duration: 1.2 }
+      )
+      .fromTo(['.nav-logo', '.nav-link', '.nav-button'],
+        { y: -15, opacity: 0 },
+        { y: 0, opacity: 1, stagger: 0.1, duration: 2 },
+        "-=0.9"
+      );
+    });
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      ctx.revert();
+    };
   }, []);
 
 
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-12 py-3 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-md shadow-sm' : 'bg-transparent'}`}>
-      <div className="flex gap-3 text-2xl font-serif font-bold tracking-tighter cursor-pointer">
+    <nav 
+      ref={navRef}
+      style={{ 
+        backgroundColor: isScrolled ? 'rgba(var(--bg-color-rgb), 0.8)' : 'transparent',
+        opacity: 0 
+      }}
+      className={`fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-12 py-3 transition-all duration-300 ${isScrolled ? 'backdrop-blur-md shadow-sm border-b border-[var(--text-color)]/10' : 'bg-transparent'}`}
+    >
+      <div className="nav-logo flex gap-3 text-2xl font-serif font-bold tracking-tighter cursor-pointer">
         {/* <img src="/MITS-LOGO.png" alt="arc_logo" className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-[72px] lg:h-[72px] bordr-2 boder-[#d4a84a]/40 hover:boder-[#d4a84a] transition-all" /> */}
-        <img src="/ARC_LOGO.jpeg" alt="arc_logo" className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-[72px] lg:h-[72px] bordr-2 boder-[#d4a84a]/40 hover:boder-[#d4a84a] transition-all mr-4" />
-
-
+        <img src="/arc_club_logo.png" alt="arc_logo" className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-[72px] lg:h-[72px] bordr-2 boder-[#d4a84a]/40 hover:boder-[#d4a84a] transition-all mr-4" />
       </div>
       
       <div className="hidden md:flex items-center space-x-12">
-        <a href="#" className="text-[10px] uppercase tracking-[0.2em] font-medium text-gray-700 hover:text-[#d4a84a] transition-colors">Idea Pool</a>
-        <a href="#" className="text-[10px] uppercase tracking-[0.2em] font-medium text-gray-700 hover:text-[#d4a84a] transition-colors">Projects</a>
-        <a href="#" className="text-[10px] uppercase tracking-[0.2em] font-medium text-gray-700 border-b-2 border-[#d4a84a] pb-1 hover:text-[#d4a84a] transition-colors">Events</a>
+        <a href="#" className="nav-link text-[10px] uppercase tracking-[0.2em] font-medium text-[var(--nav-text-color)] hover:text-[#d4a84a] transition-colors">Idea Pool</a>
+        <a href="#" className="nav-link text-[10px] uppercase tracking-[0.2em] font-medium text-[var(--nav-text-color)] hover:text-[#d4a84a] transition-colors">Projects</a>
+        <a href="#" className="nav-link text-[10px] uppercase tracking-[0.2em] font-medium text-[var(--nav-text-color)] border-b-2 border-[#d4a84a] pb-1 hover:text-[#d4a84a] transition-colors">Events</a>
       </div>
 
       <button 
@@ -63,7 +90,7 @@ const Navbar: React.FC = () => {
           transform: `translate(${buttonTransform.x}px, ${buttonTransform.y}px)`,
           transition: 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)'
         }}
-        className="bg-[#1e3a5f] text-white px-5 py-2.5 rounded-full text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-[#152d47] transition-colors duration-300 flex items-center gap-2 shadow-md hover:shadow-lg"
+        className="nav-button bg-[#1e3a5f] text-white px-5 py-2.5 rounded-full text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-[#152d47] transition-colors duration-300 flex items-center gap-2 shadow-md hover:shadow-lg"
       >
         <svg 
           xmlns="http://www.w3.org/2000/svg" 

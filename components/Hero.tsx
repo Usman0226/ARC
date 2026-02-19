@@ -3,6 +3,18 @@ import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { Lightbulb } from 'lucide-react';
 
+const WhatsAppIcon = ({ size = 16 }: { size?: number }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 16 16"
+    fill="currentColor"
+  >
+    <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.501c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+  </svg>
+  
+);
+
 const Hero: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -62,27 +74,26 @@ const Hero: React.FC = () => {
 
       // Animate floating background elements
       gsap.fromTo('.float-element', 
-        { y: 20, opacity: 0, scale: 0.8 },
+        { y: 30, opacity: 0 },
         { 
           y: 0, 
           opacity: 1, 
-          scale: 1,
-          duration: 1.2,
-          stagger: 0.15,
-          delay: 1,
-          ease: 'back.out(1.2)'
+          duration: 1.5,
+          stagger: 0.1,
+          delay: 1.2,
+          ease: 'power4.out'
         }
       );
 
-      // Add subtle floating animation
+      // Add ultra-smooth floating animation
       gsap.to('.float-element', {
-        y: '+=10',
-        duration: 2.5,
+        y: '+=8',
+        duration: 3.5,
         repeat: -1,
         yoyo: true,
         ease: 'sine.inOut',
         stagger: {
-          each: 0.3,
+          each: 0.4,
           from: 'random'
         }
       });
@@ -93,11 +104,11 @@ const Hero: React.FC = () => {
 
 
   return (
-    <section ref={containerRef} className="relative h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden pt-20 bg-gradient-to-b from-gray-50 to-white">
+    <section ref={containerRef} className="relative h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden pt-20 bg-[var(--bg-color)] transition-colors duration-0">
             
       {/* Top Left - Code Snippet Card */}
-      <div className="absolute top-20 left-[-10px] lg:top-32 lg:left-[8%] xl:left-[12%] rotate-[-3deg] scale-[0.6] lg:scale-100 z-0">
-        <div className="float-element bg-white rounded-xl shadow-lg p-4 max-w-[180px] border border-gray-200/50">
+       <div className="absolute top-20 left-[-10px] lg:top-32 lg:left-[8%] xl:left-[12%] rotate-[-3deg] scale-[0.6] lg:scale-100 z-0">
+        <div className="float-element bg-white rounded-xl shadow-lg p-4 max-w-[180px] border border-gray-200/50" style={{ opacity: 0 }}>
           <div className="flex items-center gap-2 mb-3">
             <div className="flex gap-1">
               <div className="w-2 h-2 rounded-full bg-red-400"></div>
@@ -116,7 +127,18 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Top Right - Terminal */}
-      {/* <div className="absolute top-36 right-[8%] xl:right-[12%] rotate-[2deg] hidden lg:block">
+      {/* <div className="absolute top-36 right-[8%] xl:right-[12%] rotate-[2deg] hidden lg:block"> 9
+
+
+
+
+
+
+
+
+
+
+
         <div className="float-element bg-gray-900 rounded-xl shadow-xl p-3 max-w-[200px] border border-gray-800">
           <div className="flex items-center gap-2 mb-2">
             <div className="w-2 h-2 rounded-full bg-red-500"></div>
@@ -133,7 +155,7 @@ const Hero: React.FC = () => {
 
       {/* Top Right - stats */}
       <div className="hidden lg:block absolute top-24 right-[-10px] lg:top-36 lg:right-[8%] xl:right-[12%] rotate-[2deg] scale-[0.65] lg:scale-100 z-0">
-        <div className="float-element bg-white rounded-xl shadow-xl p-3 max-w-[200px] border border-gray-100">
+        <div className="float-element bg-white rounded-xl shadow-xl p-3 max-w-[200px] border border-gray-100" style={{ opacity: 0 }}>
           <div className="flex items-center gap-4">
             <div className="text-center">
               <p className="text-xl font-bold text-[#1e3a5f]">24</p>
@@ -147,6 +169,7 @@ const Hero: React.FC = () => {
           </div>
         </div>
       </div>
+
 
       {/* Left Middle - Project Stats Card */}
       {/* <div className="absolute left-[6%] top-1/2 -translate-y-1/2 rotate-[-2deg] hidden xl:block">
@@ -198,8 +221,8 @@ const Hero: React.FC = () => {
       </div> */}
 
       {/* Bottom Right - Git Commits */}
-      <div className="absolute bottom-32 right-[-10px] lg:bottom-[18%] lg:right-[10%] xl:right-[15%] rotate-[-2deg] scale-[0.7] lg:scale-100 z-0">
-        <div className="float-element bg-white rounded-xl shadow-lg p-3 border border-gray-200/50">
+        <div className="absolute bottom-32 right-[-10px] lg:bottom-[18%] lg:right-[10%] xl:right-[15%] rotate-[-2deg] scale-[0.7] lg:scale-100 z-0">
+        <div className="float-element bg-[var(--bg-color)] rounded-xl shadow-lg p-3 border border-[var(--text-color)]/10 dark-glow transition-all duration-500" style={{ opacity: 0 }}>
           <div className="flex items-center gap-2">
             <div className="bg-orange-50 p-2 rounded-lg">
               <svg className="w-4 h-4 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
@@ -213,7 +236,6 @@ const Hero: React.FC = () => {
           </div>
         </div>
       </div>
-
       {/* Bottom Right - Git Commits */}
       {/* <div className="float-element hidden lg:block absolute bottom-[18%] right-[10%] xl:right-[15%] bg-gray-900 rounded-xl shadow-lg p-3 rotate-[-2deg] border border-gray-200/50">
         <div className="flex items-center gap-2 mb-2">
@@ -232,17 +254,17 @@ const Hero: React.FC = () => {
       {/* Main Content */}
       <div className="max-w-4xl mx-auto relative z-10">
         
-        <h1 ref={titleRef} className="text-[clamp(3rem,12vw,12rem)] font-serif font-bold tracking-tighter leading-[0.85] text-[#0a0a0b] mb-10">
+        <h1 ref={titleRef} style={{ opacity: 0 }} className="text-[clamp(3rem,12vw,12rem)] font-serif font-bold tracking-tighter leading-[0.85] text-[var(--text-color)] mb-10">
           ARC CLUB
         </h1>
-        <p className="text-[12px] uppercase tracking-[0.5em] mb-12 text-[#d4a84a] font-medium">Applied Research & Creation</p>
+        <p style={{ opacity: 0 }} className="text-[12px] uppercase tracking-[0.5em] mb-12 text-[#d4a84a] font-medium">Applied Research & Creation</p>
 
 
-        <p ref={subtitleRef} className="italic font-serif text-xl md:text-2xl text-gray-600 max-w-xl mx-auto mb-16 leading-relaxed">
+        <p ref={subtitleRef} style={{ opacity: 0 }} className="italic font-serif text-xl md:text-2xl text-gray-600 max-w-xl mx-auto mb-16 leading-relaxed">
           The structured student community for building and completing projects
         </p>
 
-        <div ref={btnContainerRef} className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div ref={btnContainerRef} style={{ opacity: 0 }} className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <button 
             onClick={()=> window.open('https://forms.gle/wy4bHuJntt915GnP7')}
             onMouseMove={(e) => handleButtonMouseMove(e, 'join')}
@@ -253,7 +275,7 @@ const Hero: React.FC = () => {
             }}
             className="flex items-center justify-center gap-2 rounded-full bg-[#1e3a5f] text-white px-10 py-4 text-[10px] uppercase tracking-[0.2em] hover:bg-[#152d47] transition-colors w-full sm:w-auto font-bold"
           >
-            Submit <Lightbulb size={16}/>
+            <Lightbulb size={16}/> Submit
           </button>
           <button 
             ref={btnref}
@@ -264,14 +286,14 @@ const Hero: React.FC = () => {
               transform: activeButton === 'thesis' ? `translate(${buttonTransform.x}px, ${buttonTransform.y}px)` : 'translate(0px, 0px)',
               transition: 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)'
             }}
-            className="flex gap-2 items-center justify-center rounded-full border-2 border-[#d4a84a] text-[#0a0a0b] px-10 py-4 text-[10px] uppercase tracking-[0.2em] hover:bg-[#d4a84a] hover:text-white transition-colors w-full sm:w-auto font-medium"
+            className="flex gap-2 items-center justify-center rounded-full border-2 border-[#d4a84a] text-[#0a0a0b] px-10 py-4 text-[10px] uppercase tracking-[0.2em] hover:bg-[#d4a84a] hover:text-white transition-colors w-full sm:w-auto font-bold"
           >
-            Join 
+             <WhatsAppIcon size={16} />Join
           </button>
         </div>
       </div>
 
-      <div className="scroll-indicator absolute bottom-12 left-12 flex items-center space-x-4">
+      <div className="scroll-indicator absolute bottom-12 left-12 flex items-center space-x-4" style={{ opacity: 0 }}>
         <div className="w-8 h-[1px] bg-[#d4a84a]"></div>
         <span className="text-[9px] uppercase tracking-[0.3em] font-medium text-gray-500">Scroll to Explore</span>
       </div>
