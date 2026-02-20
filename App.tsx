@@ -3,20 +3,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import IdeaPool from './components/IdeaPool';
-import Execution from './components/Execution';
-import PlanningPhase from './components/PlanningPhase';
-import Blueprinting from './components/Blueprinting';
-import CTA from './components/CTA';
-import Footer from './components/Footer';
 import Launch from './components/Launch';
-import Projects from './components/Projects';
-import Events from './components/Events';
-import { Home } from 'lucide-react';
+import Projects from './pages/Projects';
+import Events from './pages/Events';
+import Home from './pages/Home';
+import Navbar from './components/Navbar';
 
-// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
 const App: React.FC = () => {
@@ -31,11 +23,9 @@ const App: React.FC = () => {
   };
 
   useEffect(() => {
-    if (showLaunch) return; // Don't init scroll animations until main site is visible
+    if (showLaunch) return;
 
-    // Smooth entrance for initial elements
     const ctx = gsap.context(() => {
-      // General section reveal pattern
       const sections = document.querySelectorAll('.reveal-section');
       sections.forEach((section) => {
         gsap.fromTo(
@@ -55,8 +45,6 @@ const App: React.FC = () => {
         );
       });
 
-      // Antigravity Color Shift
-      console.log('GSAP Antigravity Init'); // Debug log
       if (mainRef.current) {
         gsap.to(mainRef.current, {
           '--bg-color': '#F0F4F8',
@@ -80,19 +68,12 @@ const App: React.FC = () => {
 
   return (
     <div ref={mainRef} className="relative min-h-screen">
+      <Navbar />
       {showLaunch && <Launch onEnter={handleEnter} />}
       {!showLaunch && (
         <Routes>
           <Route path="/" element={
-            <>
-              <Navbar />
-              <Hero />
-              <IdeaPool />
-              <PlanningPhase />
-              <Execution />
-              <CTA />
-              <Footer />
-            </>
+           <Home />
           } />
           <Route path="/projects" element={<Projects />} />
           <Route path="/events" element={<Events />} />
