@@ -115,14 +115,12 @@ const Navbar: React.FC = () => {
           <img src="/arc_club_logo.png" alt="arc_logo" className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-[72px] lg:h-[72px] bordr-2 boder-[#d4a84a]/40 hover:boder-[#d4a84a] transition-all mr-4" />
         </NavLink>
         
-        {/* Desktop nav links */}
         <div className="hidden md:flex items-center space-x-12">
           <NavLink style={({isActive}) => ({color: isActive ? '#d4a84a' : 'var(--nav-text-color)', borderBottom: isActive ? '2px solid #d4a84a' : 'none'})} to="/" className="nav-link text-[10px] uppercase tracking-[0.2em] font-medium text-[var(--nav-text-color)] hover:text-[#d4a84a] transition-colors">Home</NavLink>
           <NavLink style={({isActive}) => ({color: isActive ? '#d4a84a' : 'var(--nav-text-color)', borderBottom: isActive ? '2px solid #d4a84a' : 'none'})} to="/projects" className="nav-link text-[10px] uppercase tracking-[0.2em] font-medium text-[var(--nav-text-color)] hover:text-[#d4a84a] transition-colors">Projects</NavLink>
           <NavLink style={({isActive}) => ({color: isActive ? '#d4a84a' : 'var(--nav-text-color)', borderBottom: isActive ? '2px solid #d4a84a' : 'none'})} to="/events" className="nav-link text-[10px] uppercase tracking-[0.2em] font-medium text-[var(--nav-text-color)] border-b-2 border-[#d4a84a] pb-1 hover:text-[#d4a84a] transition-colors">Events</NavLink>
         </div>
 
-        {/* Right side: GitHub button + mobile hamburger */}
         <div className="flex items-center gap-3">
           <button 
             onClick={() => window.open('https://github.com/ARC-CLUB-MITS')}
@@ -138,7 +136,7 @@ const Navbar: React.FC = () => {
             <span className="hidden sm:inline">GitHub</span>
           </button>
 
-          {/* Mobile hamburger button */}
+          {/* Mobile */}
           <button
             onClick={toggleMobileMenu}
             className="nav-hamburger md:hidden relative w-8 h-8 flex flex-col items-center justify-center gap-[5px] z-[60]"
@@ -163,7 +161,6 @@ const Navbar: React.FC = () => {
         </div>
       </nav>
 
-      {/* Mobile menu overlay */}
       <div
         className={`fixed inset-0 z-40 md:hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           isMobileMenuOpen
