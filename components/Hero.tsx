@@ -71,7 +71,6 @@ const Hero: React.FC = () => {
         "-=0.5"
       );
 
-      // Animate floating background elements
       gsap.fromTo('.float-element', 
         { y: 30, opacity: 0 },
         { 
@@ -84,7 +83,6 @@ const Hero: React.FC = () => {
         }
       );
 
-      // Add ultra-smooth floating animation
       gsap.to('.float-element', {
         y: '+=8',
         duration: 3.5,
@@ -103,7 +101,7 @@ const Hero: React.FC = () => {
 
 
   return (
-    <section ref={containerRef} className="relative h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden pt-20 bg-[var(--bg-color)] transition-colors duration-0">
+    <section ref={containerRef} className="relative h-screen flex flex-col items-center md:justify-center text-center px-4 overflow-hidden pt-20 bg-[var(--bg-color)] transition-colors duration-0">
             
       {/* Top Left - Code Snippet Card */}
        <div className="absolute top-20 left-[-10px] lg:top-32 lg:left-[8%] xl:left-[12%] rotate-[-3deg] scale-[0.6] lg:scale-100 z-0">
@@ -127,17 +125,6 @@ const Hero: React.FC = () => {
 
       {/* Top Right - Terminal */}
       {/* <div className="absolute top-36 right-[8%] xl:right-[12%] rotate-[2deg] hidden lg:block"> 9
-
-
-
-
-
-
-
-
-
-
-
         <div className="float-element bg-gray-900 rounded-xl shadow-xl p-3 max-w-[200px] border border-gray-800">
           <div className="flex items-center gap-2 mb-2">
             <div className="w-2 h-2 rounded-full bg-red-500"></div>
