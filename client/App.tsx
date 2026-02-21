@@ -68,9 +68,12 @@ const App: React.FC = () => {
 
   return (
     <div ref={mainRef} className="relative min-h-screen">
-      <Navbar />
+
       {showLaunch && <Launch onEnter={handleEnter} />}
+      
       {!showLaunch && (
+        <>
+        <Navbar />
         <Routes>
           <Route path="/" element={
            <Home />
@@ -81,7 +84,8 @@ const App: React.FC = () => {
               <Home />
             </>} />
         </Routes>
-      )}
+        </>
+        )}
     </div>
   );
 };

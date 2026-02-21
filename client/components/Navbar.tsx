@@ -8,6 +8,7 @@ const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [buttonTransform, setButtonTransform] = useState({ x: 0, y: 0 });
   const navRef = useRef<HTMLElement>(null);
+  const hasAnimatedRef = useRef(false);
 
   const handleButtonMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
     const button = e.currentTarget;
@@ -39,44 +40,30 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 50);
     };
-
-    const hasAnimated = sessionStorage.getItem('nav_animated');
-
-    const ctx = gsap.context(() => {
-      if (hasAnimated) {
-        gsap.set(navRef.current, { yPercent: 0, opacity: 1 });
-        gsap.set(['.nav-logo', '.nav-link', '.nav-button', '.nav-hamburger'], { y: 0, opacity: 1 });
-      } else {
-        const tl = gsap.timeline({ 
-          defaults: { ease: 'ease-in', duration: 4.5 },
-          delay: 0.7
-        });
-        
-        tl.fromTo(navRef.current,
-          { yPercent: -100, opacity: 0 },
-          { yPercent: 0, opacity: 1, duration: 1.2 }
-        )
-        .fromTo(['.nav-logo', '.nav-link', '.nav-button', '.nav-hamburger'],
-          { y: -15, opacity: 0 },
-          { y: 0, opacity: 1, stagger: 0.1, duration: 2 },
-          "-=0.9"
-        );
-
-        sessionStorage.setItem('nav_animated', 'true');
-      }
-    });
-
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      ctx.revert();
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const nav = navRef.current;
+    if (!nav || hasAnimatedRef.current) return;
+
+    hasAnimatedRef.current = true;
+
+    // Smooth glide from top
+    gsap.fromTo(nav,
+      { y: -80, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: 0.3 }
+    );
+
+    // Staggered children fade in
+    gsap.fromTo(
+      nav.querySelectorAll('.nav-logo, .nav-link, .nav-button, .nav-hamburger'),
+      { y: -20, opacity: 0 },
+      { y: 0, opacity: 1, stagger: 0.08, duration: 0.6, ease: 'power2.out', delay: 1.5 }
+    );
   }, []);
 
   useEffect(() => {
@@ -107,9 +94,8 @@ const Navbar: React.FC = () => {
         ref={navRef}
         style={{ 
           backgroundColor: isScrolled || isMobileMenuOpen ? 'rgba(var(--bg-color-rgb), 0.85)' : 'transparent',
-          opacity: 0 
         }}
-        className={`fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-12 py-3 transition-all duration-300 ${isScrolled || isMobileMenuOpen ? 'backdrop-blur-xl shadow-sm border-b border-[var(--text-color)]/10' : 'bg-transparent'}`}
+        className={`fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-12 py-3 transition-[background-color,box-shadow] duration-300 ${isScrolled || isMobileMenuOpen ? 'backdrop-blur-xl shadow-sm border-b border-[var(--text-color)]/10' : 'bg-transparent'}`}
       >
         <NavLink style={({isActive}) => ({color: isActive ? '#d4a84a' : 'var(--nav-text-color)'})} to="/" className="nav-logo flex gap-3 text-2xl font-serif font-bold tracking-tighter cursor-pointer" onClick={closeMobileMenu}>
           <img src="/arc_club_logo.png" alt="arc_logo" className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-[72px] lg:h-[72px] bordr-2 boder-[#d4a84a]/40 hover:boder-[#d4a84a] transition-all mr-4" />

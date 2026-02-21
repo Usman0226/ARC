@@ -101,7 +101,7 @@ const Hero: React.FC = () => {
 
 
   return (
-    <section ref={containerRef} className="relative h-screen flex flex-col items-center md:justify-center text-center px-4 overflow-hidden pt-20 bg-[var(--bg-color)] transition-colors duration-0">
+    <section ref={containerRef} className="relative h-screen flex flex-col items-center md:justify-center text-center px-4 overflow-hidden pt-28 bg-[var(--bg-color)] transition-colors duration-0">
             
       {/* Top Left - Code Snippet Card */}
        <div className="absolute top-20 left-[-10px] lg:top-32 lg:left-[8%] xl:left-[12%] rotate-[-3deg] scale-[0.6] lg:scale-100 z-0">
@@ -237,13 +237,12 @@ const Hero: React.FC = () => {
       </div> */}
 
 
-      {/* Main Content */}
       <div className="max-w-4xl mx-auto relative z-10">
         
         <h1 ref={titleRef} style={{ opacity: 0 }} className="text-[clamp(5rem,12vw,12rem)] font-serif font-bold tracking-tighter leading-[0.85]  text-[var(--text-color)] mb-10">
           ARC <br /> CLUB
         </h1>
-        <p className="text-[12px] uppercase tracking-[0.5em] mb-12 text-[#d4a84a] font-medium">Applied Research & Creation</p>
+        <p ref={subtitleRef} className="text-[12px] uppercase tracking-[0.5em] mb-10 text-[#d4a84a] font-medium">Applied Research & Creation</p>
 
 
         <p ref={subtitleRef} style={{ opacity: 0 }} className="italic font-serif text-xl md:text-2xl text-gray-600 max-w-xl mx-auto mb-8 leading-relaxed">
