@@ -48,32 +48,27 @@ const PlanningPhase: React.FC = () => {
   const phases = [
     {
       title: 'Scope Definition',
-      desc: 'Hard boundaries for project research, preventing feature creep and maintaining focus.',
+      desc: 'Features are defined and the tasks are created and divded among the alloted team members.',
       icon: Target,
     },
     {
-      title: 'Resource Allocation',
-      desc: 'Deployment of computational power and specialized research talent to key focus areas.',
+      title: 'GitHub - Organization',
+      desc: 'A Backlog is created and the tasks are listed in it.',
       icon: Users,
     },
     {
       title: 'Timeline Mapping',
-      desc: 'Aggressive but realistic milestone setting with built-in buffer for deep exploration.',
+      desc: 'Project progress is tracked every week by Faculty Coordinator.',
       icon: Calendar,
-    },
-    {
-      title: 'Risk Assessment',
-      desc: 'Proactive identification of technical bottlenecks and data limitations before they arise.',
-      icon: Shield,
     }
   ];
 
   return (
-    <section ref={containerRef} className="bg-white py-32 md:py-24 px-6">
+    <section ref={containerRef} className="antigravity-trigger bg-[var(--bg-color)] py-32 md:py-24 px-6 transition-colors duration-0">
       <div className="max-w-4xl mx-auto">
         <div className="mb-20">
           <p className="text-[#d4a84a] text-[10px] uppercase tracking-[0.2em] font-semibold mb-6">Section 02</p>
-          <h2 className="text-6xl md:text-8xl font-serif font-medium leading-[0.9] text-[#0a0a0b]">
+          <h2 className="text-6xl md:text-8xl font-serif font-medium leading-[0.9] text-[var(--text-color)]">
             The <br /> 
             <span className="italic text-[#1e3a5f]">Planning Phase</span>
           </h2>
@@ -114,7 +109,7 @@ const PlanningPhase: React.FC = () => {
                   </div>
                   
                   <div className={`${isLeft ? 'md:text-right' : 'md:text-left'} max-w-md pl-20 md:pl-0`}>
-                    <h3 className="text-4xl md:text-6xl font-serif font-bold mb-4 text-[#0a0a0b]">{item.title}</h3>
+                    <h3 className="text-4xl md:text-6xl font-serif font-bold mb-4 text-[var(--text-color)]">{item.title}</h3>
                     <p className="text-gray-600 text-sm leading-relaxed">
                       {item.desc}
                     </p>

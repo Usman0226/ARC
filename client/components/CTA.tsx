@@ -27,7 +27,7 @@ const CTA: React.FC = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative bg-white py-48 px-6 flex flex-col items-center justify-center text-center overflow-hidden">
+    <section ref={containerRef} className="relative bg-[var(--bg-color)] py-24 px-6 flex flex-col items-center justify-center text-center overflow-hidden transition-colors duration-0">
       <div className="cta-bg-text absolute inset-0 flex items-center justify-center pointer-events-none select-none">
         <span className="text-[30vw] font-serif font-bold tracking-tighter text-gray">ARC</span>
       </div>
@@ -37,7 +37,7 @@ const CTA: React.FC = () => {
           Idea Pool is Open now
         </div>
         
-        <h2 className="text-7xl md:text-9xl font-serif font-bold tracking-tighter text-[#0a0a0b] mb-12 leading-[0.9]">
+        <h2 className="text-7xl md:text-9xl font-serif font-bold tracking-tighter text-[var(--text-color)] mb-12 leading-[0.9]">
           Submit  <br />
           <span className="italic text-[#1e3a5f] italic">Your Ideas</span>
         </h2>

@@ -50,32 +50,32 @@ const IdeaPool: React.FC = () => {
   const phases = [
     {
       title: 'Ideation',
-      desc: 'Defining the fundamental categories and relationships within the research domain to ensure a cohesive structural integrity from the start.',
+      desc: 'Students submit thier ideas in the text format .',
       icon: Lightbulb,
     },
     {
       title: 'Validation',
-      desc: 'Selecting and refining the analytical frameworks. We challenge every assumption through rigorous peer-reviewed protocols and data acquisition.',
+      desc: 'Selecting the best ideas and refining them - Faculty Coordinator.',
       icon: TrendingUp,
     },
     {
-      title: 'Selection',
-      desc: 'The transition from data to narrative. Here, the research takes its final form as a high-impact creative or academic contribution ready for distribution.',
+      title: 'Team Formation ',
+      desc: 'A four members team will be formed to work on the idea.',
       icon: CheckCircle,
     }
   ];
 
   return (
-    <section ref={containerRef} className="bg-white text-gray-900 py-32 md:py-16 px-6">
+    <section ref={containerRef} className="idea-pool-trigger bg-[var(--bg-color)] text-[var(--text-color)] py-32 md:py-16 px-6 transition-colors duration-0">
       <div className="max-w-4xl mx-auto">
         <div className="mb-20">
           <p className="text-[#d4a84a] text-[10px] uppercase tracking-[0.2em] font-semibold mb-6">Section 01</p>
-          <h2 className="text-6xl md:text-8xl font-serif font-medium leading-[0.9] text-[#0a0a0b]">
+          <h2 className="text-6xl md:text-8xl font-serif font-medium leading-[0.9] text-[var(--text-color)]">
             The <br /> 
             <span className="italic text-[#1e3a5f]">Idea Pool</span>
           </h2>
           <p className="mt-12 text-gray-600 italic font-serif text-lg md:text-xl max-w-lg">
-            A sophisticated repository of raw concepts, filtered through the lens of academic rigor and market viability.
+            A repository of raw ideas, filtered through the real world requirements & promote the innovation.
           </p>
         </div>
 
@@ -111,7 +111,7 @@ const IdeaPool: React.FC = () => {
                   </div>
                   
                   <div className={`${isLeft ? 'md:text-right' : 'md:text-left'} max-w-md pl-20 md:pl-0`}>
-                    <h3 className="text-4xl md:text-6xl font-serif font-bold mb-4 text-[#0a0a0b]">{item.title}</h3>
+                    <h3 className="text-4xl md:text-6xl font-serif font-bold mb-4 text-[var(--text-color)]">{item.title}</h3>
                     <p className="text-gray-600 text-sm leading-relaxed">
                       {item.desc}
                     </p>

@@ -41,19 +41,19 @@ const Execution: React.FC = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="bg-white py-32 md:py-24 px-6 md:px-24">
+    <section ref={containerRef} className="antigravity-trigger bg-[var(--bg-color)] py-32 md:py-24 px-6 md:px-24 transition-colors duration-0">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
           <p className="text-[#d4a84a] text-[10px] uppercase tracking-[0.3em] font-semibold mb-6">
             Section 03
           </p>
-          <h2 className="text-6xl md:text-8xl font-serif font-medium leading-[0.9] text-[#0a0a0b] mb-8">
+          <h2 className="text-6xl md:text-8xl font-serif font-medium leading-[0.9] text-[var(--text-color)] mb-8">
             Execution <br />
             <span className="italic text-[#1e3a5f]">happens daily</span>
           </h2>
           <p className="text-gray-600 italic font-serif text-lg md:text-xl max-w-xl mx-auto leading-relaxed">
-            Each ffeature is build in a separate branch and merged after review.
+            Each feature is build in a separate branch and merged after review.
           </p>
         </div>
 
