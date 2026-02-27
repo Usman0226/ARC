@@ -86,11 +86,11 @@ const Projects: React.FC = () => {
         .fromTo(
           '.project-card',
           { y: 50, opacity: 0 },
-          { y: 0, opacity: 1, duration: 1.2, stagger: 0.15, ease: 'power3.out' },
+          { y: 0, opacity: 1, duration: 0.5, stagger: 0.15, ease: 'power2.out' },
           '-=0.5'
         );
 
-      // Floating decorative elements
+      // Floating elements
       gsap.fromTo(
         '.projects-float',
         { y: 20, opacity: 0 },

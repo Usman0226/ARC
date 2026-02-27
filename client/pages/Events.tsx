@@ -16,6 +16,7 @@ interface Event {
   highlights: string[];
   tag: string;
   poster: string;
+  link?: string;
 }
 
 const events: Event[] = [
@@ -38,6 +39,27 @@ const events: Event[] = [
     ],
     tag: 'Inaugural',
     poster: '/arc_club_inauguration .png',
+  },
+  {
+    id: 2,
+    title: 'Developer Essentials : Git,GitHub & GitHub Pages',
+    date: '27',
+    month: 'FEB',
+    year: '2026',
+    time: '03:00 PM – 05:00 PM',
+    location: 'To be Updated',
+    status: 'upcoming',
+    description:
+      'A hands-on workshop to master Git, GitHub, and GitHub Pages. Learn version control, collaboration, and web deployment.',
+    highlights: [
+      'Git version control',
+      'GitHub collaboration',
+      'GitHub Pages deployment',
+      'Hands-on coding',
+    ],
+    tag: 'Developer Essentials',
+    poster: '/Workshop-27.jpeg',
+    link: 'https://forms.gle/dz617NJzztuFmc9n7',
   },
 ];
 
@@ -286,7 +308,11 @@ const Events: React.FC = () => {
                         </div>
 
                         {event.status === 'upcoming' && (
-                          <button className="inline-flex items-center gap-2 bg-[#1e3a5f] text-white px-6 py-2.5 rounded-full text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-[#152d47] transition-all duration-300 shadow-md hover:shadow-lg hover:scale-[1.02]">
+                          <button
+                            onClick={() => {
+                              window.open(event.link, '_blank');
+                            }}
+                           className="inline-flex items-center gap-2 bg-[#1e3a5f] text-white px-6 py-2.5 rounded-full text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-[#152d47] transition-all duration-300 shadow-md hover:shadow-lg hover:scale-[1.02]">
                             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                             </svg>
