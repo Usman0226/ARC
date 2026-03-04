@@ -47,8 +47,8 @@ const events: Event[] = [
     month: 'FEB',
     year: '2026',
     time: '03:00 PM – 05:00 PM',
-    location: 'To be Updated',
-    status: 'upcoming',
+    location: 'SRB 109 / SRB 219',
+    status: 'completed',
     description:
       'A hands-on workshop to master Git, GitHub, and GitHub Pages. Learn version control, collaboration, and web deployment.',
     highlights: [
